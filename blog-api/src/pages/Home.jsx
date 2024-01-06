@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Typography, List, TextField, InputAdornment, IconButton } from '@mui/material';
+import { Container, Typography, List, TextField, InputAdornment, IconButton, Grid } from '@mui/material';
 import fetchPosts from '../api/api';
 import PostCard from '../components/PostCard';
 import Pagination from '../components/Pagination';
@@ -54,43 +54,48 @@ function Home() {
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <Container>
-      <Typography variant="h4" align="center" gutterBottom>
-        Blog Posts
-      </Typography>
+    <Container maxWidth="lg" sx={{ backgroundColor: '#e3f2fd', minHeight: '100vh', paddingY: 4 }}>
+      <Grid container justifyContent="center">
+        <Grid item xs={12} md={8} lg={6}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Blog Posts
+          </Typography>
 
-      <TextField
-        label="Search"
-        variant="outlined"
-        value={searchTerm}
-        onChange={handleSearch}
-        fullWidth
-        margin="normal"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              {searchTerm && (
-                <IconButton onClick={clearSearch} edge="end">
-                  <ClearIcon />
-                </IconButton>
-              )}
-            </InputAdornment>
-          ),
-        }}
-      />
+          <TextField
+            label="Search"
+            variant="outlined"
+            value={searchTerm}
+            onChange={handleSearch}
+            fullWidth
+            margin="normal"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  {searchTerm && (
+                    <IconButton onClick={clearSearch} edge="end">
+                      <ClearIcon />
+                    </IconButton>
+                  )}
+                </InputAdornment>
+              ),
+            }}
+          />
 
-      <List>
-        {currentPosts.map(post => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </List>
+          <List>
+            {currentPosts.map(post => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </List>
 
-      <Pagination
-        totalPosts={filteredPosts.length}
-        postsPerPage={postsPerPage}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
+          <Pagination
+            totalPosts={filteredPosts.length}
+            postsPerPage={postsPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}
+          />
+        </Grid>
+      </Grid>
     </Container>
   );
 }

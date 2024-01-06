@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import fetchPosts from '../api/api';
 
 const PostDetail = () => {
@@ -29,7 +29,7 @@ const PostDetail = () => {
   if (!post) {
     // Handle loading state or post not found
     return (
-      <Container>
+      <Container sx={{ backgroundColor: '#e3f2fd', minHeight: '100vh', paddingY: 30 }}>
         <Typography variant="h4" align="center" gutterBottom>
           Loading...
         </Typography>
@@ -38,11 +38,13 @@ const PostDetail = () => {
   }
 
   return (
-    <Container>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Container sx={{ backgroundColor: '#e3f2fd', minHeight: '100vh', paddingY: 30 }}>
+      <Grid sx={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '8px', marginBottom: '16px' }}>
+      <Typography variant="h4" align="center" gutterBottom >
         {post.title}
       </Typography>
       <Typography align='justify'>{post.body}</Typography>
+      </Grid>
     </Container>
   );
 };
