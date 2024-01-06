@@ -24,7 +24,7 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) e o [npm](https://www.npmj
 4. Inicie a aplicação:
 
     ```bash
-    npm start
+    npm run dev
 
 ## Funcionalidades:
 
