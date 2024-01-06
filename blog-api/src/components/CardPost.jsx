@@ -11,7 +11,7 @@ const CardPost = ({ post }) => {
         <Typography>{`${post.body.substring(0, 100)}...`}</Typography>
       </Grid>
       <Grid item xs={12} md={4}>
-        <Button variant="contained" color="primary" href={`#post/${post.id}`}>
+        <Button variant="contained" color="primary" href={`post/${post.id}`}>
           Read More
         </Button>
       </Grid>

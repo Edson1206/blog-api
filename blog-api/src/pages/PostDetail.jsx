@@ -42,7 +42,7 @@ const PostDetail = () => {
       <Typography variant="h4" align="center" gutterBottom>
         {post.title}
       </Typography>
-      <Typography>{post.body}</Typography>
+      <Typography align='justify'>{post.body}</Typography>
     </Container>
   );
 };
