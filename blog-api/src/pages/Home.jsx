@@ -1,61 +1,98 @@
-import { useEffect, useState } from "react"
-import fetchPosts from "../api/api";
-import { Container, TextField, Typography } from '@mui/material'
-import Pagination from "../components/Pagination";
-import BlogList from "../components/BlogList";
+import { useState, useEffect } from 'react';
+import { Container, Typography, List, TextField, InputAdornment, IconButton } from '@mui/material';
+import fetchPosts from '../api/api';
+import PostCard from '../components/PostCard';
+import Pagination from '../components/Pagination';
+import ClearIcon from '@mui/icons-material/Clear';
 
-const Home = () => {
+function Home() {
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 5;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchPosts();
         setPosts(data);
+        setFilteredPosts(data);
       } catch (error) {
         console.error('Error fetching submission:', error);
       }
-    }
+    };
+
     fetchData();
   }, []);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    const term = event.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    const filtered = posts.filter(post =>
+      post.title.toLowerCase().includes(term) ||
+      post.body.toLowerCase().includes(term)
+    );
+
+    setFilteredPosts(filtered);
     setCurrentPage(1);
-  }
+  };
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    setFilteredPosts(posts);
+    setCurrentPage(1);
+  };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <Container>
-      <Typography variant='h4' align='center' gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom>
         Blog Posts
       </Typography>
+
       <TextField
-        label='Search'
-        variant='outlined'
-        fullWidth
-        margin='normal'
+        label="Search"
+        variant="outlined"
         value={searchTerm}
         onChange={handleSearch}
+        fullWidth
+        margin="normal"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              {searchTerm && (
+                <IconButton onClick={clearSearch} edge="end">
+                  <ClearIcon />
+                </IconButton>
+              )}
+            </InputAdornment>
+          ),
+        }}
       />
-      <BlogList 
-        posts={posts} 
-        currentPage={currentPage} 
-        postsPerPage={postsPerPage} 
-        searchTerm={searchTerm} 
-      />
-      <Pagination 
+
+      <List>
+        {currentPosts.map(post => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </List>
+
+      <Pagination
+        totalPosts={filteredPosts.length}
         postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        paginate={paginate}
         currentPage={currentPage}
+        onPageChange={handlePageChange}
       />
     </Container>
-  )
+  );
 }
 
-export default Home
+export default Home;
