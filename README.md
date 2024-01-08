@@ -62,4 +62,4 @@ A estrutura de componentes é clara e segue as melhores práticas do React. Cada
 Essa foi a parte mais desafiadora do projeto, pois ainda não tinha trabalhado com Material UI, e consequentemente acabei usando o mínimo de recursos possíveis para que a aparência e a acessibilidade fosse a mais simples possível, mas apesar do pouco tempo efetivamente trabalhando nesse projeto acredito que consegui bons resultados em fazer com que a aplicação tivesse alguma responsividade em diferentes dispositivos, achei uma biblioteca muito interessante e vou me aprofundar na sua documentação.
 
 
-Se você tiver sugestões de melhorias ou encontrar áreas que possam ser aprimoradas, sinta-se à vontade para abrir uma [issue](https://github.com/Edson1206/blog-app/issues) ou enviar um pull request. A colaboração é bem-vinda!
+Se você tiver sugestões de melhorias ou encontrar áreas que possam ser aprimoradas, sinta-se à vontade para abrir uma [issue](https://github.com/Edson1206/blog-api/issues) ou enviar um pull request. A colaboração é bem-vinda!
