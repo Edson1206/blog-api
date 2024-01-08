@@ -1,4 +1,4 @@
-# Blog App
+# Blog API
 
 Este é um aplicativo de blog simples construído com React e Material-UI.
 
@@ -9,12 +9,12 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) e o [npm](https://www.npmj
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/Edson1206/blog-app.git
+   git clone git@github.com:Edson1206/blog-api.git
 
 2. Navegue até o diretório do projeto:
 
    ```bash
-   cd blog-app
+   cd blog-api/blog-api
 
 3. Instale as dependências:
 
@@ -47,7 +47,7 @@ A aplicação foi estilizada através do [Material UI](https://mui.com/material-
 
 ## Avaliação do Código
 
-Este projeto foi estruturado com a intenção de ser claro, modular e fácil manutenção. A seguir estão algumas considerações sobre a organização do código, clareza da estrutura de componentes e qualidade do estilo:
+Este projeto foi estruturado com a intenção de ser claro, modular e de fácil manutenção. É um projeto bem interessante pois exemplifica bem o funcionamento do React e seus principais recursos como o `useEffect` e o `useState`. A seguir estão algumas considerações sobre a organização do código, clareza da estrutura de componentes e qualidade do estilo:
 
 ### Organização do Código
 
@@ -59,6 +59,7 @@ A estrutura de componentes é clara e segue as melhores práticas do React. Cada
 
 ### Qualidade do Estilo
 
-O estilo é aplicado de forma coesa e utiliza as funcionalidades do Material-UI para garantir uma aparência consistente. A utilização do sistema de grades, paleta de cores e sombras contribui para uma experiência visual agradável. A escolha de estilos responsivos também melhora a experiência do usuário em diferentes dispositivos.
+Essa foi a parte mais desafiadora do projeto, pois ainda não tinha trabalhado com Material UI, e consequentemente acabei usando o mínimo de recursos possíveis para que a aparência e a acessibilidade fosse a mais simples possível, mas apesar do pouco tempo efetivamente trabalhando nesse projeto acredito que consegui bons resultados em fazer com que a aplicação tivesse alguma responsividade em diferentes dispositivos, achei uma biblioteca muito interessante e vou me aprofundar na sua documentação.
+
 
 Se você tiver sugestões de melhorias ou encontrar áreas que possam ser aprimoradas, sinta-se à vontade para abrir uma [issue](https://github.com/Edson1206/blog-app/issues) ou enviar um pull request. A colaboração é bem-vinda!
